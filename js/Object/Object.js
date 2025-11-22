@@ -1,4 +1,4 @@
-class Object{
+export class Object{
     constructor(x,y){
         this.x = x;
         this.y = y;
@@ -10,7 +10,7 @@ class Object{
 
     }
 
-    draw(){
+    draw(context){
 
     }
 }

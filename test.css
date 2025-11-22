@@ -1,0 +1,28 @@
+.center-container-vertical {
+  /* 화면 전체를 채우도록 설정 */
+  width: 100vw;  /* Viewport Width */
+  height: 100vh; /* Viewport Height */
+  
+  /* 1. Flex 컨테이너로 설정 */
+  display: flex;
+  
+  /* 2. 주축(Main Axis)을 세로(상하)로 변경 */
+  flex-direction: column;
+  
+  /* 3. 주축(세로) 방향 중앙 정렬 */
+  justify-content: center; 
+  
+  /* 4. 교차축(가로) 방향 중앙 정렬 */
+  align-items: center; 
+  
+  /* (선택 사항) 버튼들 사이 간격 주기 */
+  gap: 10%;
+}
+
+/* 버튼 자체 스타일 (선택 사항) */
+button {
+    width: 30%;
+    height: 20%;
+  padding: 15px 30px;
+  font-size: 18px;
+}
