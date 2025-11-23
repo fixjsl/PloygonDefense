@@ -1,5 +1,5 @@
 import { GameEngine } from "./GameLoop.js"
-
+import { GameUI } from "./GameUI.js"
 
 
 class GamePage{
@@ -8,7 +8,12 @@ class GamePage{
 
     constructor(){
         this.page
-        this.map = new GameEngine
+        this.map = new GameEngine()
+        this.UI = new GameUI()
+    }
+    Init(){
+        this.map.Init()
+        this.UI.Init()
     }
 
     LevelStart(level){
@@ -17,6 +22,7 @@ class GamePage{
 
     StartScreen(){
         page.style.display = 'flex'
+        this.map.mainLoop()
     }
 
     CloseScreen(){
@@ -25,4 +31,4 @@ class GamePage{
 }
 
 const GameP = new GamePage()
-export default EditorP
+export default GameP

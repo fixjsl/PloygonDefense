@@ -1,7 +1,7 @@
 
 export class GameEngine{
 
-    constructor(level){
+    constructor(){
         this.canvas 
         this.ctx
         // 게임 상태 관련 변수들도 모두 인스턴스 속성으로 정의
@@ -12,7 +12,8 @@ export class GameEngine{
         this.enemies = [];
         this.projectiles = [];
         this.towers = []; 
-        this.level = level;
+        
+        this.gameSpeed = 1;
     }
  
 
@@ -34,11 +35,7 @@ export class GameEngine{
         
         // 캔버스 배경 설정
         this.ctx.fillStyle = '#fcfcfcff';
-        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-
-        this.mapdraw()
-
-        
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);      
 
 }
 
