@@ -1,7 +1,7 @@
 
 export class GameEngine{
 
-    constructor(){
+    constructor(level){
         this.canvas 
         this.ctx
         // 게임 상태 관련 변수들도 모두 인스턴스 속성으로 정의
@@ -11,7 +11,8 @@ export class GameEngine{
 
         this.enemies = [];
         this.projectiles = [];
-        this.towers = []; // 'Towers' 대신 소문자 'towers' 사용 권장
+        this.towers = []; 
+        this.level = level;
     }
  
 
@@ -58,12 +59,14 @@ export class GameEngine{
     requestAnimationFrame(mainLoop)
 }
 
-mapdataPaser(){
-
+mapdataPaser(level){
+    //JSON파일 파싱
 }
 
-mapdraw(){
-    
+mapdraw(level){
+    mapdata = this.mapdataPaser(level)
+
+    const mapcode = mapdata.mapcode
 }
 
 

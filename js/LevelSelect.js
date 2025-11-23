@@ -14,11 +14,11 @@ class LevelSelect{
     }
 
     StartScreen(){
-
+        page.style.display = 'flex'
     }
 
     CloseScreen(){
-
+        page.style.display = 'none'
     }
 }
 

@@ -4,8 +4,30 @@
 
     },
     "WaveData":{
-
+        "wave1" : {
+            "enemies" : 20,
+            "Generator" : 1
+        },
+        "wave2": {
+            "enemies" : 15,
+            "Elete" : 2,
+            "Generator" : 1
+        },
+        "wave3": {
+            "enemies" : 30,
+            "Elete" : 3,
+            "Generator" : 1
+        },
+        "wave4": {
+            "enemies" : 25,
+            "Elete" : 3,
+            "Generator" : 1
+        },
+        "wave5": {
+            "enemies" : 25,
+            "Elete" : 5,
+            "boss" : 1,
+            "Generator" : 1
+        }
     }
-
-    
 }

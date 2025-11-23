@@ -30,7 +30,7 @@ Init(){
         PM.changePage(StartP,Levelp)
     })
     EditorButton.addEventListener('click',()=>{
-        PM.changePage(StartP.EditorP);
+        PM.changePage(StartP,EditorP);
     })
 
     StartPage.append(
