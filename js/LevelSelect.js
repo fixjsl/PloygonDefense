@@ -36,7 +36,14 @@ class LevelSelect{
             this.level +=1
             this.NextLevel()
         })
-        
+
+        SelectPage.append(HomeButton,LeftButton, LevelStartButton,RightButton)
+
+        document.body.appendChild(SelectPage)
+
+        this.page = SelectPage
+
+        this.CloseScreen()
     }
 
     StartScreen(){
