@@ -1,7 +1,4 @@
-
-
-
-class LevelSelect{
+class GamePage{
 
 
 
@@ -22,5 +19,5 @@ class LevelSelect{
     }
 }
 
-const Levelp = new LevelSelect();
-export default Levelp
+const GameP = new GamePage()
+export default EditorP

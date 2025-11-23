@@ -1,7 +1,4 @@
-
-
-
-class LevelSelect{
+class MapEditor{
 
 
 
@@ -22,5 +19,5 @@ class LevelSelect{
     }
 }
 
-const Levelp = new LevelSelect();
-export default Levelp
+const EditorP = new MapEditor()
+export default EditorP

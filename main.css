@@ -24,6 +24,7 @@ body { margin: 0;
   align-items: center; 
 
   gap: 10%;
+
 }
 #gameCanvas { 
     border: 2px solid #f9f9f9; 

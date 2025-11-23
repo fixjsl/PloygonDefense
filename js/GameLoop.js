@@ -16,7 +16,6 @@ export class GameEngine{
  
 
 
-
 //map data
 
  Init(){
@@ -33,13 +32,12 @@ export class GameEngine{
         this.canvas.height = 720;
         
         // 캔버스 배경 설정
-        this.ctx.fillStyle = '#1e1e1e';
+        this.ctx.fillStyle = '#fcfcfcff';
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-        console.log("GameEngine 초기화 완료. 메인 루프 시작.");
+        this.mapdraw()
 
-        // 메인 루프 실행 시작
-        this.mainLoop();
+        
 
 }
 
