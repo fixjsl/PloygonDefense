@@ -37,6 +37,8 @@ export class GameEngine{
         this.ctx.fillStyle = '#fcfcfcff';
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);      
 
+        this.canvas.style.display = 'none'
+
 }
 
 //mainloop

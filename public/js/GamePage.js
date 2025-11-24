@@ -21,12 +21,12 @@ class GamePage{
     }
 
     StartScreen(){
-        page.style.display = 'flex'
+        this.page.style.display = 'flex'
         this.map.mainLoop()
     }
 
     CloseScreen(){
-        page.style.display = 'none'
+        this.page.style.display = 'none'
     }
 }
 

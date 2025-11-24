@@ -8,6 +8,7 @@ class LevelSelect{
 
     constructor(){
         this.page
+        this.maxlevel
         this.level = 1
     }
 
@@ -20,6 +21,8 @@ class LevelSelect{
 
         const LevelStartButton = document.createElement('button')
 
+        this.GetMaxlevel()
+
         LevelStartButton.textContent = 'Level' + this.level
 
 
@@ -28,13 +31,19 @@ class LevelSelect{
         })
 
         LeftButton.addEventListener('click',()=>{
-            this.level -=1
-            this.NextLevel()
+            if(this.level-1 >=1){
+                this.level -=1
+                this.NextLevel(LeftButton)
+            }
+
 
         })
         RightButton.addEventListener('click',()=>{
-            this.level +=1
-            this.NextLevel()
+            if(this.level+1 <=this.maxlevel){
+                this.level +=1
+                this.NextLevel(RightButton) 
+            }
+
         })
 
         SelectPage.append(HomeButton,LeftButton, LevelStartButton,RightButton)
@@ -43,18 +52,37 @@ class LevelSelect{
 
         this.page = SelectPage
 
-        this.CloseScreen()
+        SelectPage.style.display = 'none'
+    }
+    async GetMaxlevel(){
+        try{
+            const res = await fetch('http://127.0.0.1:52273/api/count/level')
+
+            if(!res.ok){
+                throw new Error('Connection Error')
+            }
+
+            const data = await res.json()
+
+            maxlevel = data.Maxlevel
+        }
+        catch(err){
+            console.error(err)
+            this.maxlevel = 1
+        }
+
+
     }
 
     StartScreen(){
-        page.style.display = 'flex'
+        this.page.style.display = 'flex'
     }
 
     CloseScreen(){
-        page.style.display = 'none'
+        this.page.style.display = 'none'
     }
-    NextLevel(){
-        LevelStartButton.textContent = 'Level' + this.level
+    NextLevel(button){
+        button.textContent = 'Level' + this.level
     }
 }
 
