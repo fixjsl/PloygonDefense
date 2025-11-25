@@ -1,0 +1,2 @@
+docker run --name mariadb-polygon-defense -e MYSQL_ROOT_PASSWORD=fixjsl75767@ -e MYSQL_USER=fixjsl -e MYSQL_PASSWORD=fixjsl75767@ -e MYSQL_DATABASE=polygonDefense -p 3306:3306 -v "D:\popol\code\WebGame\PloygonDefense\Database":/var/lib/mysql --network my-game-network -d mariadb:latest
+docker run --name PolygonDefenseSever -p 52273:52273 --network PolygonDefense -d polygondefense-api
