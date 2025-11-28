@@ -1,3 +1,6 @@
+import e from "express";
+import { EnemyGenerator } from "./EnemyGenerator.js";
+
 
 export class GameEngine{
 
@@ -9,11 +12,18 @@ export class GameEngine{
         this.MAP_WIDTH = 35; 
         this.MAP_HEIGHT = 18; 
 
+        this.enemyGenerator = new EnemyGenerator(this);
         this.enemies = [];
         this.projectiles = [];
         this.towers = []; 
-        
+        this.barricades = [];
+
         this.gameSpeed = 1;
+        this.Target = {
+            x: null,
+            y: null,
+            hp : null
+        }
     }
  
 
@@ -58,18 +68,64 @@ export class GameEngine{
     requestAnimationFrame(mainLoop)
 }
 
+
+ColiderCheck(){
+    //충돌체크
+    const n = enemies.length
+    for(let i =0; i<n;i++){
+        const enemy = enemies[i]
+        for(let j =0; j<projectiles.length;j++){
+            const objB = projectiles[j];
+            // 2. 두 오브젝트의 충돌체 인스턴스를 가져옵니다.
+            const colliderA = enemy.collider;
+            const colliderB = objB.collider;
+            if (colliderA.isColliding(colliderB)) {
+                // A가 B와의 충돌을 처리
+                if (enemy.handleCollision) {
+                    enemy.handleCollision(objB);
+                }
+                // B가 A와의 충돌을 처리
+                if (objB.handleCollision) {
+                    objB.handleCollision();
+                }
+            }
+        }
+        for(let k =0; k<barricades.length;k++){
+            const objC = barricades[k];
+            const colliderA = enemy.collider;
+            const colliderB = objC.collider;
+            if (colliderA.isColliding(colliderB)) {
+                // A가 B와의 충돌을 처리
+                if (enemy.handleCollision) {
+                    enemy.handleCollision(objC);
+                }
+                // B가 A와의 충돌을 처리
+                if (objC.handleCollision) {
+                    objC.handleCollision(objA);
+                }
+            }
+        }
+
+    }
+}
 mapdataPaser(level){
     //JSON파일 파싱
 }
 
-mapdraw(level){
-    mapdata = this.mapdataPaser(level)
+mapInit(level){
+    const mapdata = this.mapdataPaser(level)
+    //target hp 설정
+}
 
+mapdraw(mapdata){
     const mapcode = mapdata.mapcode
+    //맵 그리기
+    //0 : 길 1 : 타워설치 가능 2 : 설치불가 -1 : 몬스터 스폰 3 : 타겟(x, y설정)
+}
+
+waveStart(){
+
 }
 
 
 }
-
-
-

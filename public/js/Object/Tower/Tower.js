@@ -2,8 +2,13 @@ import { Object } from "../Object";
 
 
 export class Tower extends Object{
-    constructor(){
-        
+    constructor(x,y){
+        this.attack
+        this.range
+        this.fireRate
+        this.size
+        this.goldCost
+        super(x,y);
     }
 
 

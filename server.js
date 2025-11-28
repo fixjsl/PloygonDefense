@@ -7,6 +7,10 @@ const app = express()
 
 const LevelPath = path.join(__dirname,'Mapdata')
 const CustomPath = path.join(__dirname,'CustomMap')
+
+
+app.connection = function(){}
+
 app.get('/api/count/level',(req,res) => {
     try{
         const files = fs.readdirSync(LevelPath)
@@ -20,7 +24,16 @@ app.get('/api/count/level',(req,res) => {
 
     }
 })
+app.get('/api/count/customlevel',(req,res) => {
+    try{
+        const files = fs.readdirSync(CustomPath)
+        const data = files.filter(filename => filename.endsWith('.json'))
 
+        return data;
+    }catch{
+
+    }
+})
 app.use(express.static('public'))
 
 app.listen(52273,()=>{

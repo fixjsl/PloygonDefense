@@ -4,7 +4,7 @@ class PageManager{
     }
     changePage(prev, next){
         prev.CloseScreen()
-        next.StartScreen
+        next.StartScreen()
     }
 
 }

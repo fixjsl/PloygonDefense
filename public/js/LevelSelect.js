@@ -14,7 +14,7 @@ class LevelSelect{
 
     Init(){
         const SelectPage = document.createElement('div')
-
+        SelectPage.id = 'LevelSelectPage'
         const HomeButton = document.createElement('button')
         const LeftButton = document.createElement('button')
         const RightButton = document.createElement('button')
@@ -27,7 +27,7 @@ class LevelSelect{
 
 
         HomeButton.addEventListener('click',()=>{
-            PM.changePage(this.page,StartP)
+            PM.changePage(Levelp,StartP)
         })
 
         LeftButton.addEventListener('click',()=>{
@@ -52,7 +52,7 @@ class LevelSelect{
 
         this.page = SelectPage
 
-        SelectPage.style.display = 'none'
+        this.page.style.display = 'none'
     }
     async GetMaxlevel(){
         try{
@@ -70,7 +70,7 @@ class LevelSelect{
             console.error(err)
             this.maxlevel = 1
         }
-
+        console.log(this.maxlevel)
 
     }
 
