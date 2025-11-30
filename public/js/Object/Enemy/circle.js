@@ -10,13 +10,12 @@ export class CircleEnemy extends Enemy{
         this.hp = 50;
         this.attack = 5;
         this.movespeed = 2; // 애는 제일 빠름
+
+        this.bounty = 5;
     }
 
     update(){
-        // 원형 적의 이동 로직 구현
-        // 일정 속도로 목표지점까지 경로를 따라 이동
-        // 부딪혔을떄 데미지를 주기 구현
-
+        super.update();
     }
 
     draw(ctx){

@@ -1,11 +1,8 @@
 import PM from "./PageManager.js"
 import StartP from "./StartPage.js"
-
+import GameP from "./GamePage.js"
 
 class LevelSelect{
-
-
-
     constructor(){
         this.page
         this.maxlevel
@@ -20,12 +17,15 @@ class LevelSelect{
         const RightButton = document.createElement('button')
 
         const LevelStartButton = document.createElement('button')
-
+        const CustomMapButton = document.createElement('button')
         this.GetMaxlevel()
 
         LevelStartButton.textContent = 'Level' + this.level
 
-
+        LevelStartButton.addEventListener('click',()=>{
+            PM.changePage(Levelp,GameP)
+            GameP.LevelStart(this.level)
+        })
         HomeButton.addEventListener('click',()=>{
             PM.changePage(Levelp,StartP)
         })
@@ -33,7 +33,8 @@ class LevelSelect{
         LeftButton.addEventListener('click',()=>{
             if(this.level-1 >=1){
                 this.level -=1
-                this.NextLevel(LeftButton)
+                LevelStartButton.textContent = 'Level' + this.level
+                console.log(this.level)
             }
 
 
@@ -41,12 +42,13 @@ class LevelSelect{
         RightButton.addEventListener('click',()=>{
             if(this.level+1 <=this.maxlevel){
                 this.level +=1
-                this.NextLevel(RightButton) 
+                LevelStartButton.textContent = 'Level' + this.level
+                console.log(this.level)
             }
 
         })
 
-        SelectPage.append(HomeButton,LeftButton, LevelStartButton,RightButton)
+        SelectPage.append(HomeButton,LeftButton, LevelStartButton,RightButton,CustomMapButton)
 
         document.body.appendChild(SelectPage)
 
@@ -63,8 +65,8 @@ class LevelSelect{
             }
 
             const data = await res.json()
-
-            maxlevel = data.Maxlevel
+            console.log(data)
+            this.maxlevel = data.maxlevel
         }
         catch(err){
             console.error(err)
@@ -80,9 +82,6 @@ class LevelSelect{
 
     CloseScreen(){
         this.page.style.display = 'none'
-    }
-    NextLevel(button){
-        button.textContent = 'Level' + this.level
     }
 }
 

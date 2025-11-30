@@ -17,7 +17,7 @@ export class Tower extends Object{
 
     }
 
-    draw(){
+    draw(ctx){
         
     }
 }

@@ -17,12 +17,12 @@ class GamePage{
     }
 
     LevelStart(level){
-        this.map.mapdraw(level)
+        this.map.mapInit(level)
+        this.map.mainLoop()
     }
 
     StartScreen(){
         this.page.style.display = 'flex'
-        this.map.mainLoop()
     }
 
     CloseScreen(){
