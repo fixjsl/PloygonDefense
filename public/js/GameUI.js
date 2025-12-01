@@ -4,7 +4,7 @@ import GameP from "./GamePage.js";
 
 export class GameUI{
     constructor(){
-
+        this.UI
     }
 
     Init(){
@@ -24,5 +24,9 @@ export class GameUI{
                 speed = 1
             }
         })
+        this.UI = Uicanvas
+        document.body.appendChild(this.UI)
+        this.UI.id = 'GameUI'
+        this.UI.style.display = 'none'
     }
 }

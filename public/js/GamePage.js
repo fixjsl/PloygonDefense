@@ -27,7 +27,7 @@ class GamePage{
 
     CloseScreen(){
         this.map.canvas.style.display = 'none'
-        this.UI.canvas.style.display = 'none'
+        this.UI.UI.style.display = 'none'
     }
 }
 
