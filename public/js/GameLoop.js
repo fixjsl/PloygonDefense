@@ -28,6 +28,8 @@ export class GameEngine{
         }
         this.LevelClear = false;
 
+        this.currentwave
+        this.Maxwave
         this.playerMoney;
         this.mapbuffercanvas;
     }
@@ -66,16 +68,16 @@ export class GameEngine{
     this.ctx.drawImage(this.mapBufferCanvas, 0, 0);
 
     this.enemyGenerator.SpawnWave()
-        const deadEnemies = this.enemies.filter(enemy => enemy.isDead);
+    const deadEnemies = this.enemies.filter(enemy => enemy.isDead);
         
-        this.enemies = this.enemies.filter(enemy => !enemy.isDead);
-        this.barricades = this.barricades.filter(bar => !bar.isdead);
-        this.projectiles = this.projectiles.filter(pro => !pro.isDead);
+    this.enemies = this.enemies.filter(enemy => !enemy.isDead);
+    this.barricades = this.barricades.filter(bar => !bar.isdead);
+    this.projectiles = this.projectiles.filter(pro => !pro.isDead);
         
-        if (deadEnemies.length > 0) {
-             const earnedMoney = deadEnemies.reduce((sum, enemy) => sum + (enemy.bounty || 0), 0);
-             this.playerMoney += earnedMoney;
-        }
+    if (deadEnemies.length > 0) {
+        const earnedMoney = deadEnemies.reduce((sum, enemy) => sum + (enemy.bounty || 0), 0);
+        this.playerMoney += earnedMoney;
+    }
     this.enemies.forEach(enemy => enemy.update())
     this.towers.forEach(tower => tower.update())
     this.projectiles.forEach(pro => pro.update())

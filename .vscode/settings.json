@@ -11,9 +11,9 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MariaDB",
-            "database": "polygonDefense",
+            "database": "PolygonDefense",
             "username": "fixjsl",
-            "name": "PolygonDefense"
+            "name": "DBPolygon"
         }
     ]
 }

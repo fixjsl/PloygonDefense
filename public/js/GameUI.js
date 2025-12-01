@@ -9,10 +9,13 @@ export class GameUI{
 
     Init(){
         //Draw UI Button
+        const Uicanvas = document.createElement('div')
         //Pause Button
+        const pause = document.createElement('button')
         //Retry Button
+        const retry = document.createElement('button')
         //Resume Button
-        //Select Button
+        const resume = document.createElement('button')
         //Speed Button
         const speed = document.createElement('button')
         speed.addEventListener('click',()=>{

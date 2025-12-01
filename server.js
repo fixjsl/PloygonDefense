@@ -33,21 +33,14 @@ app.get('/api/levels/:id',(req,res) => {
     const filename = `level${levelId}.json`;
     const filePath = path.join(LevelPath, filename);
     try {
-        console.log(`[API Request] Reading map file: ${filePath}`);
-
-        // 2. JSON 파일을 동기적으로 읽어와 문자열로 저장합니다.
         const fileContent = fs.readFileSync(filePath, 'utf8');
         
-        // 3. JSON 문자열을 JavaScript 객체로 변환합니다.
         const mapData = JSON.parse(fileContent);
 
-        // 4. JavaScript 객체를 Express가 다시 JSON 응답으로 변환하여 전송합니다.
         res.json(mapData);
 
     } catch (error) {
 
-
-        // 파일 시스템 접근 오류 (ENOENT: 파일 없음) 처리
         if (error.code === 'ENOENT') {
             console.warn(`[API Error] Level file not found: ${filePath}`);
             return res.status(404).json({ 
@@ -56,7 +49,6 @@ app.get('/api/levels/:id',(req,res) => {
             });
         }
         
-        // JSON 파싱 오류 또는 기타 서버 오류 처리
         console.error(`[API Error] Internal error processing level ${levelId}:`, error.message);
         return res.status(500).json({ 
             error: `Error processing map data for level ${levelId}.`,

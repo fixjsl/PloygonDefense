@@ -7,7 +7,6 @@ class GamePage{
 
 
     constructor(){
-        this.page
         this.map = new GameEngine()
         this.UI = new GameUI()
     }
@@ -22,11 +21,13 @@ class GamePage{
     }
 
     StartScreen(){
-        this.page.style.display = 'flex'
+        this.map.canvas.style.display = 'flex'
+        this.UI.canvas.style.display = 'flex'
     }
 
     CloseScreen(){
-        this.page.style.display = 'none'
+        this.map.canvas.style.display = 'none'
+        this.UI.canvas.style.display = 'none'
     }
 }
 

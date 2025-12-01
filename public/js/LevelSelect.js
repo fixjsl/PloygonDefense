@@ -24,6 +24,7 @@ class LevelSelect{
 
         LevelStartButton.addEventListener('click',()=>{
             PM.changePage(Levelp,GameP)
+            console.log(this.level)
             GameP.LevelStart(this.level)
         })
         HomeButton.addEventListener('click',()=>{
