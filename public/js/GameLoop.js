@@ -42,14 +42,11 @@ export class GameEngine{
         this.canvas.id = 'gameCanvas';
         document.body.appendChild(this.canvas);
         
-        // 컨텍스트 할당 (this.ctx 사용)
         this.ctx = this.canvas.getContext('2d');
 
-        // 캔버스 크기 설정 (인스턴스 속성을 사용하여 설정)
         this.canvas.width = 1400;
         this.canvas.height = 720;
         
-        // 캔버스 배경 설정
         this.ctx.fillStyle = '#fcfcfcff';
         this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);      
 
@@ -61,7 +58,7 @@ export class GameEngine{
 
  mainLoop = ()=> {
     if (this.LevelClear) {
-        return; // 레벨 클리어 시 루프 종료
+        return; 
     }
 
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -71,18 +68,13 @@ export class GameEngine{
     this.enemyGenerator.SpawnWave()
         const deadEnemies = this.enemies.filter(enemy => enemy.isDead);
         
-        // 2. 배열 업데이트: isDead가 false인 몬스터만 남기고 제거
         this.enemies = this.enemies.filter(enemy => !enemy.isDead);
         this.barricades = this.barricades.filter(bar => !bar.isdead);
         this.projectiles = this.projectiles.filter(pro => !pro.isDead);
         
-        // 3. 보상 계산 및 지급
         if (deadEnemies.length > 0) {
-             // deadEnemies 배열을 순회하며 moneyValue를 합산하여 보상 계산
              const earnedMoney = deadEnemies.reduce((sum, enemy) => sum + (enemy.bounty || 0), 0);
              this.playerMoney += earnedMoney;
-             // 콘솔 로그로 확인 (나중에 UI에 표시해야 함)
-             console.log(`몬스터 ${deadEnemies.length}마리 처치. +${earnedMoney} 획득. 현재 돈: ${this.playerMoney}`);
         }
     this.enemies.forEach(enemy => enemy.update())
     this.towers.forEach(tower => tower.update())
@@ -99,21 +91,18 @@ export class GameEngine{
 
 
 ColiderCheck(){
-    //충돌체크
     const n = this.enemies.length
     for(let i =0; i<n;i++){
         const enemy = this.enemies[i]
         for(let j =0; j<this.projectiles.length;j++){
             const objB = this.projectiles[j];
-            // 2. 두 오브젝트의 충돌체 인스턴스를 가져옵니다.
+            
             const colliderA = enemy.collider;
             const colliderB = objB.collider;
             if (colliderA.isColliding(colliderB)) {
-                // A가 B와의 충돌을 처리
                 if (enemy.handleCollision) {
                     enemy.handleCollision(objB);
                 }
-                // B가 A와의 충돌을 처리
                 if (objB.handleCollision) {
                     objB.handleCollision();
                 }
@@ -124,11 +113,11 @@ ColiderCheck(){
             const colliderA = enemy.collider;
             const colliderB = objC.collider;
             if (colliderA.isColliding(colliderB)) {
-                // A가 B와의 충돌을 처리
+                
                 if (enemy.handleCollision) {
                     enemy.handleCollision(objC);
                 }
-                // B가 A와의 충돌을 처리
+                
                 if (objC.handleCollision) {
                     objC.handleCollision(objA);
                 }
@@ -152,7 +141,7 @@ async mapInit(level){
     this.CELL_SIZEx = this.canvas.width / this.MAP_WIDTH
     this.CELL_SIZEy =  this.canvas.height / this.MAP_HEIGHT;
     this.playerMoney = mapdata.startMoney
-    //target hp 설정
+
     this.Target.hp = mapdata.baseHp
 
 
@@ -191,22 +180,19 @@ mapdraw(mapdata){
             const x = j * this.CELL_SIZEx
             const y = i * this.CELL_SIZEy
                 if (cell === 0) {
-                    color = '#a0a0a0ff'; // 길
+                    color = '#a0a0a0ff'; 
                 } else if (cell === 1) {
-                    color = '#00ff00ff'; // 타워설치 가능
+                    color = '#00ff00ff'; 
                 } else if (cell === 2) {
-                    color = '#fcbffeff'; // 설치불가
+                    color = '#fcbffeff'; 
                 } else if (cell === -1) {
-                    color = '#0000ffff'; // 몬스터 스폰
-                    // 스폰 좌표는 몬스터 생성기가 처리하므로 여기서 별도 저장 불필요
+                    color = '#0000ffff'; 
                 } else if (cell === 3) {
-                    color = '#ff0000ff'; // 타겟
-                    // 타겟의 중심 좌표를 설정
+                    color = '#ff0000ff'; 
                     this.Target.x = x + this.CELL_SIZEx / 2
                     this.Target.y = y + this.CELL_SIZEy / 2
                 }
                 
-                // 타일 색상 적용 및 그리기
                 ctx.fillStyle = color;
                 ctx.fillRect(x, y, this.CELL_SIZEx, this.CELL_SIZEy);
 }
